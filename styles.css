@@ -1,0 +1,94 @@
+html , body{
+    
+    margin: 0;
+    background-color: #111;
+    color: #eeeeee;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#grid{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+h1{
+    font-size: 2.5rem;
+    color: rgb(255, 255, 255);
+    margin: 3vh;
+}
+
+
+
+.row{
+    display: flex;
+    gap: 7px;
+}
+
+.cell{
+    height: 8vmin;
+    width: 8vmin;
+    border: 2px solid rgb(120, 120, 120);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5vmin;
+    font-weight: 700;
+}
+
+#keyboard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+    margin-top: auto;
+    margin-bottom: 30px;
+}
+
+.keyboard-row{
+    display: flex;
+    gap: 1vh;
+}
+
+.keyboard-button{
+    color: rgb(255, 255, 255);
+    background-color: rgb(113, 113, 113);
+    width: 8vmin;
+    height: 8vmin;
+    border-radius: 10%;
+    font-size: 3vmin;
+    text-transform: uppercase;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.keyboard-button:hover{
+    border: 2px solid rgb(78, 213, 120);
+}
+
+.enter-button{
+    width: 18vmin;
+    border-radius: 5px;
+}
+
+.backspace-button{
+    width: 28vmin;
+    border-radius: 5px;
+}
