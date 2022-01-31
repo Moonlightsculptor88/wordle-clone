@@ -178,14 +178,14 @@ function drawAttempt(row, attempt, isCurrAttempt){
         let back = cell.children[1]
         front.textContent = attempt[i] 
         back.textContent = attempt[i] 
-        // if(front.textContent === attempt[i]){
-        //     front.style.border = '2px solid rgb(110, 110, 110)'
-        //     front.classList.add("cell-animate")
-        // }
-        // else{
-        //     front.style.border = '2px solid rgb(66, 66, 66)'
-        //     front.classList.remove("cell-animate")
-        // }
+        if(front.textContent === attempt[i]){
+            front.style.border = '2px solid rgb(110, 110, 110)'
+            front.classList.add("cell-animate")
+        }
+        else{
+            front.style.border = '2px solid rgb(66, 66, 66)'
+            front.classList.remove("cell-animate")
+        }
         if(!isCurrAttempt){
             back.textContent = attempt[i]
             back.style.backgroundColor = getColor(attempt , i)
