@@ -1,3 +1,8 @@
+:root{
+    --font-color: rgb(214, 214, 214);
+
+}
+
 html , body{
     
     margin: 0;
@@ -27,7 +32,7 @@ body{
 
 h1{
     font-size: 2.5rem;
-    color: rgb(214, 214, 214);
+    color: var(--font-color);
     margin-top: 0;
 }
 
@@ -39,6 +44,7 @@ h1{
 }
 
 .cell{
+    color: var(--font-color);;
     height: 8vmin;
     width: 8vmin;
     border: 2px solid rgb(66, 66, 66);
@@ -51,6 +57,12 @@ h1{
 
 .cell-animate{
     animation: pop 0.1s ;
+}
+
+@keyframes flip {
+    50%{
+        transform: rotateX(180deg);
+    }
 }
 
 @keyframes pop{
@@ -80,7 +92,7 @@ h1{
 }
 
 .keyboard-button{
-    color: rgb(214, 214, 214);
+    color: var(--font-color);;
     background-color: rgb(113, 113, 113);
     width: 8vmin;
     height: 8vmin;

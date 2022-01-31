@@ -52,7 +52,10 @@ function handleKeydown(e){
 
 function endGame(){
     alert(secret)
+}
 
+function winGame(){
+    alert('Game over, Good JOB hobbo')
 }
 
 function clearData(){
@@ -72,11 +75,16 @@ function handleKey(key){
             alert('Not in List')
             return
         }
-        if(attempts.length === 5 && currAttempt !== secret){
-            endGame()
+        if(currAttempt === secret){
+           const time = setTimeout(winGame, 1000)
+            
+        }
+        if((attempts.length === 5 && currAttempt !== secret)){
+            const time = setTimeout(endGame, 500)
         }
         attempts.push(currAttempt)
         currAttempt = ''
+        flipAnimate()
         updateKeyboard()
         saveGame()
         if(attempts.length === 6){
@@ -89,7 +97,14 @@ function handleKey(key){
             currAttempt += letter
         }
     }
-    updateGrid();
+    
+    updateGrid()
+    
+}
+
+function flipAnimate(){
+    let rowIndex = attempts.length
+    
 }
 
 
