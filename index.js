@@ -42,6 +42,9 @@ let currAttempt = ''
 window.addEventListener('keydown' , handleKeydown)
 
 function handleKeydown(e){
+
+
+
     if(e.ctrlKey || e.altKey){
         return
     }
@@ -84,8 +87,9 @@ function handleKey(key){
         }
         attempts.push(currAttempt)
         currAttempt = ''
-        flipAnimate()
+        
         updateKeyboard()
+        flipAnimate()
         saveGame()
         if(attempts.length === 6){
             clearData()
@@ -102,8 +106,35 @@ function handleKey(key){
     
 }
 
-function flipAnimate(){
-    let rowIndex = attempts.length
+function addClasses(i, row){
+    for(let j = 0; j < 5; j++){
+        row[i].children[j].children[1].classList.add("back-flip" + (j+1))
+        row[i].children[j].children[0].classList.add("front-flip" + (j+1))
+    }
+}
+
+function flipAnimate(isCurrAttempt){
+
+    let row = grid.children
+
+    if(attempts.length ){
+        for(let i = 0; i < attempts.length; i++){
+            addClasses(i, row)
+        }
+    }
+
+    if(isCurrAttempt){
+        let rowIndex = attempts.length - 1
+
+
+        addClasses(rowIndex, row)
+    }
+    
+}
+
+function getBackRow(){
+    let row = grid.children
+
     
 }
 
@@ -115,7 +146,12 @@ function buildGrid(){
         for(let j = 0; j < 5; j++){
             let cell = document.createElement('div');
             cell.className = "cell";
-            cell.textContent = "";
+            let front = document.createElement('div')
+            let back = document.createElement('div')
+            front.className = "front-cell"
+            back.className = "back-cell"
+            cell.appendChild(front)
+            cell.appendChild(back)
             row.appendChild(cell);
         }
         grid.appendChild(row);
@@ -128,31 +164,33 @@ function updateGrid(){
         drawAttempt(row, attempt, false)
         
         row = row.nextSibling
-        
     }
     if(row){
         drawAttempt(row, currAttempt, true)
+        
     }
 }
 
 function drawAttempt(row, attempt, isCurrAttempt){
-
     for(let i = 0; i < 5; i++){
         let cell = row.children[i]
-        cell.textContent = attempt[i] 
-        if(cell.textContent === attempt[i]){
-            cell.style.border = '2px solid rgb(110, 110, 110)'
-            cell.classList.add("cell-animate")
-        }
-        else{
-            cell.style.border = '2px solid rgb(66, 66, 66)'
-            cell.classList.remove("cell-animate")
-        }
+        let front = cell.children[0]
+        let back = cell.children[1]
+        front.textContent = attempt[i] 
+        back.textContent = attempt[i] 
+        // if(front.textContent === attempt[i]){
+        //     front.style.border = '2px solid rgb(110, 110, 110)'
+        //     front.classList.add("cell-animate")
+        // }
+        // else{
+        //     front.style.border = '2px solid rgb(66, 66, 66)'
+        //     front.classList.remove("cell-animate")
+        // }
         if(!isCurrAttempt){
-            let cell = row.children[i]
-            cell.textContent = attempt[i]
-            cell.style.backgroundColor = getColor(attempt , i)
-            cell.style.border = 'none'
+            back.textContent = attempt[i]
+            back.style.backgroundColor = getColor(attempt , i)
+            back.style.border = 'none'
+            flipAnimate(false)
         }
     }
     
