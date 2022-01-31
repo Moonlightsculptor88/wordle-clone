@@ -1,6 +1,11 @@
 'use strict'
 
 
+//Animations
+//Ending the game on getting the right word
+//losers panel
+//rule set should be displayed as soon as the website loads
+
 
 let wordList = [
    'horse',
@@ -32,6 +37,8 @@ let currAttempt = ''
 
 
 
+
+
 window.addEventListener('keydown' , handleKeydown)
 
 function handleKeydown(e){
@@ -42,9 +49,16 @@ function handleKeydown(e){
     
 }
 
+
 function endGame(){
     alert(secret)
+
 }
+
+function clearData(){
+    localStorage.clear()
+}
+
 
 function handleKey(key){
     
@@ -64,15 +78,20 @@ function handleKey(key){
         attempts.push(currAttempt)
         currAttempt = ''
         updateKeyboard()
+        saveGame()
+        if(attempts.length === 6){
+            clearData()
+        }
     } else if (letter === 'backspace'){
         currAttempt = currAttempt.slice(0, currAttempt.length - 1)
-    } else if(/[a-z]/.test && (letter.length === 1)){
+    } else if(/[a-zA-Z]/.test(letter) && (letter.length === 1)){
         if(currAttempt.length < 5){
             currAttempt += letter
         }
     }
     updateGrid();
 }
+
 
 function buildGrid(){
     for(let i = 0; i < 6; i++){
@@ -92,9 +111,13 @@ function updateGrid(){
     let row = grid.children[0];
     for(let attempt of attempts){
         drawAttempt(row, attempt, false)
+        
         row = row.nextSibling
+        
     }
-    drawAttempt(row, currAttempt, true)
+    if(row){
+        drawAttempt(row, currAttempt, true)
+    }
 }
 
 function drawAttempt(row, attempt, isCurrAttempt){
@@ -102,14 +125,20 @@ function drawAttempt(row, attempt, isCurrAttempt){
     for(let i = 0; i < 5; i++){
         let cell = row.children[i]
         cell.textContent = attempt[i] 
-        if(isCurrAttempt){
-            cell.style.backgroundColor = "#111"
+        if(cell.textContent === attempt[i]){
+            cell.style.border = '2px solid rgb(110, 110, 110)'
+            cell.classList.add("cell-animate")
         }
         else{
+            cell.style.border = '2px solid rgb(66, 66, 66)'
+            cell.classList.remove("cell-animate")
+        }
+        if(!isCurrAttempt){
             let cell = row.children[i]
             cell.textContent = attempt[i]
             cell.style.backgroundColor = getColor(attempt , i)
-    } 
+            cell.style.border = 'none'
+        }
     }
     
      
@@ -204,9 +233,39 @@ function updateKeyboard(){
     }
 }
 
+function loadGame(){
+    console.log('hello');
+    let data 
+    try{
+        data = JSON.parse(localStorage.getItem('data'))
+    }catch{}
+    if(data !== null){
+        secret = data.secret
+        attempts = data.attempts
+        
+    }
+    
+}
+
+function saveGame(){
+    let data =JSON.stringify({
+        secret,
+        attempts
+    })
+    try{
+        localStorage.setItem('data', data)
+    }catch{ 
+    }
+    
+}
+
+
 let grid = document.querySelector('#grid')
 let keyboard = document.querySelector('#keyboard')
 let keyboardButtons = new Map()
+
+loadGame()
 buildGrid()
-buildKeyboard();
+buildKeyboard()
 updateGrid()
+updateKeyboard()

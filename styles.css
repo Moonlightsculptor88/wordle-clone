@@ -27,8 +27,8 @@ body{
 
 h1{
     font-size: 2.5rem;
-    color: rgb(255, 255, 255);
-    margin: 3vh;
+    color: rgb(214, 214, 214);
+    margin-top: 0;
 }
 
 
@@ -41,12 +41,28 @@ h1{
 .cell{
     height: 8vmin;
     width: 8vmin;
-    border: 2px solid rgb(120, 120, 120);
+    border: 2px solid rgb(66, 66, 66);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 5vmin;
     font-weight: 700;
+}
+
+.cell-animate{
+    animation: pop 0.1s ;
+}
+
+@keyframes pop{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
 
 #keyboard{
@@ -64,7 +80,7 @@ h1{
 }
 
 .keyboard-button{
-    color: rgb(255, 255, 255);
+    color: rgb(214, 214, 214);
     background-color: rgb(113, 113, 113);
     width: 8vmin;
     height: 8vmin;
