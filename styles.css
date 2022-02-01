@@ -74,50 +74,50 @@ h1{
 }
 
 .back-flip1{
-    animation: flip 0.4s forwards;
+    animation: flip 0.6s forwards;
 }
 
 .back-flip2{
-    animation: flip 0.4s forwards;
+    animation: flip 0.6s forwards;
     animation-delay: 0.2s;
 }
 
 .back-flip3{
-    animation: flip 0.4s forwards;
+    animation: flip 0.6s forwards;
     animation-delay: 0.4s;
 }
 
 .back-flip4{
-    animation: flip 0.4s forwards;
+    animation: flip 0.6s forwards;
     animation-delay: 0.6s;
 }
 
 .back-flip5{
-    animation: flip 0.4s forwards;
+    animation: flip 0.6s forwards;
     animation-delay: 0.8s;
 }
 
 .front-flip1{
-    animation: front-flip 0.4s forwards;
+    animation: front-flip 0.6s forwards;
 }
 
 .front-flip2{
-    animation: front-flip 0.4s forwards;
+    animation: front-flip 0.6s forwards;
     animation-delay: 0.2s;
 }
 
 .front-flip3{
-    animation: front-flip 0.4s forwards;
+    animation: front-flip 0.6s forwards;
     animation-delay: 0.4s;
 }
 
 .front-flip4{
-    animation: front-flip 0.4s forwards;
+    animation: front-flip 0.6s forwards;
     animation-delay: 0.6s;
 }
 
 .front-flip5{
-    animation: front-flip 0.4s forwards;
+    animation: front-flip 0.6s forwards;
     animation-delay: 0.8s;
 }
 

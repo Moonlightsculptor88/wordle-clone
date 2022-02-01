@@ -34,6 +34,8 @@ let secret = wordList[index]
 let attempts = []
 let currAttempt = ''
 
+let gameEnd = false
+
 
 
 
@@ -54,11 +56,31 @@ function handleKeydown(e){
 
 
 function endGame(){
+    alert("You loser")
     alert(secret)
 }
 
 function winGame(){
-    alert('Game over, Good JOB hobbo')
+    if(attempts.length === 1){
+        alert('Genius')
+    }
+    if(attempts.length === 2){
+        alert('Just below Genius')
+    }
+    if(attempts.length === 3){
+        alert('Good Job')
+    }
+    if(attempts.length === 4){
+        alert('Decent')
+    }
+    if(attempts.length === 5){
+        alert('Way below Genius')
+    }
+    if(attempts.length === 6){
+        alert('Lucky boy')
+    }
+    gameEnd = true
+    localStorage.clear()
 }
 
 function clearData(){
@@ -69,6 +91,10 @@ function clearData(){
 function handleKey(key){
     
     let letter = key.toLowerCase()
+
+    if(gameEnd){
+        return
+    }
 
     if(letter === 'enter' ){
         if(currAttempt.length < 5){
