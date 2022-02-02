@@ -55,33 +55,96 @@ function handleKeydown(e){
 }
 
 
+
+let panel = document.querySelector(".endgame")
+
+let cross = panel.querySelector(".cross")
+
+cross.addEventListener('click',()=>{
+    panel.style.transform = "translateY(-200%)"
+})
+
+function callEndGamePanel(){
+    let heading = document.createElement('h1')
+    let subHeading = document.createElement('h3')
+    let iframe = document.createElement('lottie-player')
+    
+    heading.classList.add('game-end-h1')
+    subHeading.classList.add('game-end-h3')
+
+    if(attempts.length === 1){
+        heading.textContent = "You Won"
+        subHeading.textContent = "I wish you put in this effort into studying"
+        iframe.setAttribute("src", "https://assets4.lottiefiles.com/packages/lf20_fixmre.json");
+        iframe.setAttribute("background", "transparent");
+        iframe.setAttribute("speed", "1");
+        iframe.setAttribute("loop", "")
+        iframe.setAttribute("autoplay", "")
+    }
+    if(attempts.length === 2){
+        heading.textContent = "You Won"
+        subHeading.textContent = "Sending the money to your account, please give details"
+        iframe.setAttribute("src", "https://assets4.lottiefiles.com/packages/lf20_lhvzRK.json");
+        iframe.setAttribute("background", "transparent");
+        iframe.setAttribute("speed", "1");
+        iframe.setAttribute("loop", "")
+        iframe.setAttribute("autoplay", "")
+    }
+    if(attempts.length === 3){
+        heading.textContent = "You Won"
+        subHeading.textContent = "Need your bank details to send the gift card"
+        iframe.setAttribute("src", "https://assets4.lottiefiles.com/packages/lf20_yBeV8a.json");
+        iframe.setAttribute("background", "transparent");
+        iframe.setAttribute("speed", "1");
+        iframe.setAttribute("loop", "")
+        iframe.setAttribute("autoplay", "")
+    }
+    if(attempts.length === 4){
+        heading.textContent = "You Won"
+        subHeading.textContent = "There you go you won a whole castle"
+        iframe.setAttribute("src", "https://assets4.lottiefiles.com/packages/lf20_KH7hdA.json");
+        iframe.setAttribute("background", "transparent");
+        iframe.setAttribute("speed", "1");
+        iframe.setAttribute("loop", "")
+        iframe.setAttribute("autoplay")
+    }
+    if(attempts.length === 5){
+        heading.textContent = "You Won"
+        subHeading.textContent = "A glass of wine is what you get"
+        iframe.setAttribute("src", "https://assets10.lottiefiles.com/packages/lf20_menpm2u0.json");
+        iframe.setAttribute("background", "transparent");
+        iframe.setAttribute("speed", "1");
+        iframe.setAttribute("loop","")
+        iframe.setAttribute("autoplay","")
+    }
+    if(attempts.length === 6){
+        heading.textContent = "You Won"
+        subHeading.textContent = "Cutting it close now aren't we"
+        iframe.setAttribute("src", "https://assets10.lottiefiles.com/private_files/lf30_kvdn44jg.json");
+        iframe.setAttribute("background", "transparent");
+        iframe.setAttribute("speed", "1");
+        iframe.setAttribute("loop","")
+        iframe.setAttribute("autoplay","")
+    }
+    panel.appendChild(iframe)
+    panel.appendChild(heading)
+    panel.appendChild(subHeading)
+    panel.style.transform = "translateY(-50%)"
+}
+
+function winGame(){
+    callEndGamePanel()
+    
+    gameEnd = true
+    localStorage.clear()
+}
+
 function endGame(){
     alert("You loser")
     alert(secret)
 }
 
-function winGame(){
-    if(attempts.length === 1){
-        alert('Genius')
-    }
-    if(attempts.length === 2){
-        alert('Just below Genius')
-    }
-    if(attempts.length === 3){
-        alert('Good Job')
-    }
-    if(attempts.length === 4){
-        alert('Decent')
-    }
-    if(attempts.length === 5){
-        alert('Way below Genius')
-    }
-    if(attempts.length === 6){
-        alert('Lucky boy')
-    }
-    gameEnd = true
-    localStorage.clear()
-}
+
 
 function clearData(){
     localStorage.clear()

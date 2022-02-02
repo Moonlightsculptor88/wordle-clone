@@ -31,7 +31,7 @@ body{
 }
 
 h1{
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: var(--font-color);
     margin-top: 0;
 }
@@ -199,4 +199,78 @@ h1{
 .backspace-button{
     width: 28vmin;
     border-radius: 5px;
+}
+
+.endgame{
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60%;
+    height: 90%;
+    position: absolute;
+    background-color:#853b3b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-200%);
+    transition: 2s ease ;
+}
+
+lottie-player{
+    border: none;
+    height: 500px;
+    width: 500px;
+    pointer-events: none;
+}
+
+
+.cross{
+    position: absolute;
+    top: 10px;
+    right: 0;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+}
+
+.cross > div {
+    height: 5px;
+    width: 40px;
+    background-color: white;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+}
+
+.cross div:nth-child(1){
+    transform: rotate(45deg);
+}
+.cross div:nth-child(2){
+    transform: rotate(315deg);
+}
+
+.cross:hover div:nth-child(1){
+    animation: spin1 0.5s ;
+}
+.cross:hover div:nth-child(2){
+    animation: spin2 0.5s ;
+    animation-delay: 0.1s;
+}
+
+
+@keyframes spin1 {
+    50%{
+        transform: rotate(225deg);
+    }
+    100%{
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes spin2 {
+    50%{
+        transform: rotate(135deg);
+    }
+    100%{
+        transform: rotate(315deg);
+    }
 }
