@@ -207,12 +207,17 @@ h1{
     width: 60%;
     height: 90%;
     position: absolute;
-    background-color:#853b3b;
+    background-color:#538d4e;
     display: flex;
     flex-direction: column;
     align-items: center;
     transform: translateY(-200%);
     transition: 2s ease ;
+    border-radius: 10px;
+}
+
+.endgame > h1, h3{
+    color: white;
 }
 
 lottie-player{

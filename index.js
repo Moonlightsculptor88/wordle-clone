@@ -1,10 +1,10 @@
 'use strict'
 
 
-//Animations
-//Ending the game on getting the right word
 //losers panel
 //rule set should be displayed as soon as the website loads
+//light and dark mode
+//add all 5 letter words
 
 
 let wordList = [
@@ -64,7 +64,7 @@ cross.addEventListener('click',()=>{
     panel.style.transform = "translateY(-200%)"
 })
 
-function callEndGamePanel(){
+function callEndGamePanel(isLose){
     let heading = document.createElement('h1')
     let subHeading = document.createElement('h3')
     let iframe = document.createElement('lottie-player')
@@ -72,6 +72,19 @@ function callEndGamePanel(){
     heading.classList.add('game-end-h1')
     subHeading.classList.add('game-end-h3')
 
+    if(isLose){
+        heading.textContent = "You Actually lost"
+        subHeading.textContent = "damn we got a sore loser here"
+        let text = document.createElement('p')
+        text.textContent = "the secret word is '" + secret + "' :P" 
+        iframe.setAttribute("src", "https://assets4.lottiefiles.com/packages/lf20_hfkrvixt.json");
+        iframe.setAttribute("background", "transparent");
+        iframe.setAttribute("speed", "1");
+        iframe.setAttribute("loop", "")
+        iframe.setAttribute("autoplay", "")
+    }
+
+    else{
     if(attempts.length === 1){
         heading.textContent = "You Won"
         subHeading.textContent = "I wish you put in this effort into studying"
@@ -106,7 +119,7 @@ function callEndGamePanel(){
         iframe.setAttribute("background", "transparent");
         iframe.setAttribute("speed", "1");
         iframe.setAttribute("loop", "")
-        iframe.setAttribute("autoplay")
+        iframe.setAttribute("autoplay", "")
     }
     if(attempts.length === 5){
         heading.textContent = "You Won"
@@ -126,6 +139,7 @@ function callEndGamePanel(){
         iframe.setAttribute("loop","")
         iframe.setAttribute("autoplay","")
     }
+}
     panel.appendChild(iframe)
     panel.appendChild(heading)
     panel.appendChild(subHeading)
@@ -133,15 +147,14 @@ function callEndGamePanel(){
 }
 
 function winGame(){
-    callEndGamePanel()
+    callEndGamePanel(false)
     
     gameEnd = true
     localStorage.clear()
 }
 
 function endGame(){
-    alert("You loser")
-    alert(secret)
+    callEndGamePanel(true)
 }
 
 
@@ -256,7 +269,6 @@ function updateGrid(){
     }
     if(row){
         drawAttempt(row, currAttempt, true)
-        
     }
 }
 
