@@ -57,11 +57,18 @@ function handleKeydown(e){
 
 
 let panel = document.querySelector(".endgame")
+let ruleset = document.querySelector(".rule-wrapper")
 
 let cross = panel.querySelector(".cross")
+let crossRule = ruleset.querySelector(".cross")
 
 cross.addEventListener('click',()=>{
     panel.style.transform = "translateY(-200%)"
+})
+
+crossRule.addEventListener('click',()=>{
+    ruleset.style.opacity = "0";
+    ruleset.style.pointerEvents = "none"
 })
 
 function callEndGamePanel(isLose){
@@ -77,6 +84,7 @@ function callEndGamePanel(isLose){
         subHeading.textContent = "damn we got a sore loser here"
         let text = document.createElement('p')
         text.textContent = "the secret word is '" + secret + "' :P" 
+        panel.appendChild(text)
         iframe.setAttribute("src", "https://assets4.lottiefiles.com/packages/lf20_hfkrvixt.json");
         iframe.setAttribute("background", "transparent");
         iframe.setAttribute("speed", "1");
@@ -143,6 +151,7 @@ function callEndGamePanel(isLose){
     panel.appendChild(iframe)
     panel.appendChild(heading)
     panel.appendChild(subHeading)
+    
     panel.style.transform = "translateY(-50%)"
 }
 
@@ -162,6 +171,7 @@ function endGame(){
 function clearData(){
     localStorage.clear()
 }
+
 
 
 function handleKey(key){
