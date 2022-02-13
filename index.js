@@ -62,6 +62,13 @@ let ruleset = document.querySelector(".rule-wrapper")
 let cross = panel.querySelector(".cross")
 let crossRule = ruleset.querySelector(".cross")
 
+let info = document.getElementById('info')
+
+info.addEventListener('click', ()=>{
+    ruleset.style.opacity = "1"
+    ruleset.style.pointerEvents = "all"
+})
+
 cross.addEventListener('click',()=>{
     panel.style.transform = "translateY(-200%)"
 })
@@ -159,7 +166,7 @@ function winGame(){
     callEndGamePanel(false)
     
     gameEnd = true
-    localStorage.clear()
+    localStorage.removeItem('data')
 }
 
 function endGame(){
@@ -169,7 +176,7 @@ function endGame(){
 
 
 function clearData(){
-    localStorage.clear()
+    localStorage.removeItem(data)
 }
 
 
@@ -433,3 +440,23 @@ buildGrid()
 buildKeyboard()
 updateGrid()
 updateKeyboard()
+
+window.onload = function () {
+    if (localStorage.getItem("hasCodeRunBefore") === null) {
+        ruleset.style.opacity = 1;
+        ruleset.style.pointerEvents = 'all';
+        localStorage.setItem("hasCodeRunBefore", true);
+    }
+}
+
+
+
+//Dark mode toggle
+
+let darkToggle = document.getElementById('dark-toggle')
+
+darkToggle.addEventListener('click', ()=>{
+    darkToggle.classList.toggle('fa-sun')
+    darkToggle.classList.toggle('fa-moon')
+
+})

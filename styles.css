@@ -37,11 +37,7 @@ hr{
     gap: 7px;
 }
 
-h1{
-    font-size: 2.2rem;
-    color: var(--font-color);
-    margin-top: 0;
-}
+
 
 .rule-wrapper{
     background-color: black;
@@ -55,6 +51,8 @@ h1{
     align-items: center;
     justify-content: center;
     transition: 1s ease;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .rule-panel{
@@ -95,6 +93,28 @@ h1{
     border: none;
 }
 
+.heading-section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.heading-section h1{
+    font-size: 2.2rem;
+    color: var(--font-color);
+}
+
+.heading-section i{
+    color: var(--font-color);
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.heading-section i:hover{
+    transform: scale(1.2);
+}
 
 .row{
     display: flex;
