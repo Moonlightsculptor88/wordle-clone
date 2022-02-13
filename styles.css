@@ -112,6 +112,10 @@ hr{
     transition: 0.1s;
 }
 
+h3{
+    color: blue;
+}
+
 .heading-section i:hover{
     transform: scale(1.2);
 }
